@@ -1,0 +1,38 @@
+{
+  "name": "behzad-hse-electron",
+  "version": "1.0.0",
+  "description": "Behzad HSE - Electron desktop app (React + Vite + Electron)",
+  "main": "electron/main.js",
+  "scripts": {
+    "dev": "concurrently \"vite\" \"wait-on http://localhost:5173 && electron .\"",
+    "start": "electron .",
+    "build": "vite build",
+    "dist": "npm run build && electron-builder --windows --x64",
+    "prepare": "electron-builder install-app-deps"
+  },
+  "author": "Behzad HSE",
+  "license": "MIT",
+  "devDependencies": {
+    "concurrently": "^8.2.0",
+    "electron": "^26.1.0",
+    "electron-builder": "^24.6.0",
+    "wait-on": "^7.0.1",
+    "vite": "^5.1.0",
+    "@vitejs/plugin-react": "^4.0.0"
+  },
+  "build": {
+    "appId": "com.behzad.hse",
+    "productName": "Behzad HSE",
+    "files": [
+      "dist/**/*",
+      "electron/**/*",
+      "package.json"
+    ],
+    "directories": {
+      "buildResources": "build"
+    },
+    "win": {
+      "target": "nsis"
+    }
+  }
+}
