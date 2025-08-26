@@ -1,4 +1,4 @@
-name: Build Behzad HSE Installer
+name: Behzad HSE Installer
 
 on:
   workflow_dispatch:
