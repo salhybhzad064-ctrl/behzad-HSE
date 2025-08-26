@@ -1,0 +1,29 @@
+name: Build Behzad HSE Installer
+
+on:
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: windows-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Build app (production)
+        run: npm run dist
+
+      - name: Upload artifact (installer)
+        uses: actions/upload-artifact@v3
+        with:
+          name: Behzad-HSE-Installer
+          path: dist/**
